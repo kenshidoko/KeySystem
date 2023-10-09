@@ -1,0 +1,20 @@
+string gettext = textBox1.Text;
+            int gettext_amount = gettext.Length;
+
+            if (gettext_amount > 20)
+            {
+                WebClient client = new WebClient();
+                string key = client.DownloadString("https://pastebin.com/raw/3UR5wHGZ");
+
+
+                if (key.Contains(textBox1.Text))
+                {
+                    this.Hide();
+                    Form2 form = new Form2();
+                    form.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Please use a valid key", "Executor");
+                }
+            }
